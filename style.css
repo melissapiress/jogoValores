@@ -45,8 +45,7 @@ header{
 }
 
 .cultura > img{
-    width: 35%;
-    height: 35%;
+    width: 30vw;
 }
 
 .cultura{
@@ -54,3 +53,16 @@ header{
     justify-content: end;
     margin-bottom: 25%;
 }
+
+.card-1{
+    background-color: #E3FFED;
+}
+
+.card-2 {
+    background-color: #11C76F;
+}
+
+.card-3 {
+    background-color: #FFFFFF;
+}
+
