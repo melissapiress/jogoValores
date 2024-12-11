@@ -11,9 +11,13 @@
     font-style: normal;
 }
 
+
+
 html{
     font-family: "Montserrat", sans-serif;
 }
+
+/* ------------------------ HOME ----------------------- */
 
 header{
     background-color: #13563E;
@@ -27,42 +31,107 @@ header{
     color: black;
 }
 
-#titulo{
+.titulo{
     text-align: center;
     color: #13563E;
 }
 
-#texto-intro{
+.texto-intro{
     text-align: center;
 }
 
 
-.texto-main{
-    width: 40%;
-    margin-left: 5%;
-    font-size:small;
-    text-align: center;
+@media screen and (min-width: 900px) {
+    main{
+        display: flex;
+        justify-content: center;
+        margin-left: 4%;
+        margin-top: 3%;
+    }
+
+    .cultura > img{
+        width: 450px;
+    }
+
+    .cultura{
+        justify-content: end;
+        margin-right: 10%;
+    }
+
+    .texto-main{
+        width: 40%;
+        margin-top: 10%;
+        font-size: medium;
+        text-align: center;
+        place-items: center;
+    }
 }
 
-.cultura > img{
-    width: 30vw;
+@media screen and (max-width: 900px) {
+    main{
+        display: flex;
+        justify-content: center;
+        margin-left: 4%;
+        margin-top: 3%;
+    }
+
+    .cultura > img{
+        width: 300px;
+    }
+
+   
+    .texto-main{
+        width: 30%;
+        margin-top: 10%;
+        font-size: small;
+        text-align: center;
+    }
+   
 }
 
-.cultura{
+@media screen and (max-width: 680px) {
+    main{
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+    }
+
+    .cultura > img{
+        width: 150px;
+    }
+
+    .cultura{
+        margin-top: 10%;
+        padding-left: 8%;
+    }
+   
+    .texto-main{
+        margin-top: 10%;
+        text-align: center;
+        font-size: x-small;
+        padding-right: 8%;
+    }
+   
+}
+
+
+.botao-jogar{
+    font-family: "Montserrat", sans-serif;
+    border: 0;
+    border-radius: 15px;
+    background-color: #13563E;
+    color: #FFFFFF;
+    width: 300px;
+    height: 80px;
+    font-size: X-large;
+}
+
+.jogar{
     display: flex;
-    justify-content: end;
-    margin-bottom: 25%;
+    justify-content: center;
+
+    padding-top: 40px;
 }
 
-.card-1{
-    background-color: #E3FFED;
-}
 
-.card-2 {
-    background-color: #11C76F;
-}
-
-.card-3 {
-    background-color: #FFFFFF;
-}
 
