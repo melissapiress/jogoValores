@@ -211,17 +211,19 @@ form{
     margin: 4% 3% 0%;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .card-1{
-    background-color: #E3FFED; /* Verde claro */
+    background-color: #E3FFED;
+    border: #E3FFED 2px solid; 
     border-radius: 20px;
     padding: 10px;
     width: 210px;
     height: 280px;
 }
 .card-2{
-    background-color: #11C76F; /* Verde médio */
+    background-color: #11C76F; 
     border-radius: 15px;
     padding: 10px;
     width: 190px;
@@ -229,7 +231,7 @@ form{
 
 }
 .card-3{
-    background-color: #ffffff; /* Branco */
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
@@ -250,5 +252,19 @@ form{
     color:#13563E
     
 }
+.dialog {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 70%;
+    height: 70%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-left: 15%;
+    margin-top: 5%;
+    border-radius: 20px;
+  }
 
 /* ------------------ FINAL --------------- */

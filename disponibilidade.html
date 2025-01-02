@@ -12,6 +12,12 @@
         display: flex;
         justify-content: center;
     }
+    .selecionado{
+        border: #7387f3 2px solid;
+    }
+    .vermelho{
+            color: red;
+    }
 </style>
 <body>
     <header>
@@ -21,7 +27,7 @@
         <h2>Disponibilidade</h2>
         <p>Qual dessas características define a Disponibilidade?</p>
     </div>
-
+    <div class="timer"><h1>00:40</h1></div>
     <div class="pai-cartas">
         <div class="card-1">
             <div class="card-2">
@@ -89,7 +95,60 @@
         </div>
     </div>
     <div class="jogar">
-        <a href="franqueza.html" class="botao-jogar"><strong>Enviar</strong></a>
+        <button class="botao-jogar" onclick="abrirDialogo()"><strong>Enviar</strong></button>
     </div>
+    <dialog class="dialog" id="myDialog" style="display: none;">
+        <h1>Você acertou 3 de 4!</h1>
+        <h3>Como a Disponibilidade se aplica ao dia a dia?</h3>
+        <p>"Um colaborador se empenha em compreender os processos da empresa e assume total responsabilidade pelas tarefas designadas, buscando executá-las com excelência."</p>
+        <div class="proximo-regras"><a href="franqueza.html" class="botao-proximo">Próximo valor</a></div>
+    </dialog>
+    <script>
+        selecionaCarta()
+        let timerInterval = setInterval(contagemRegressiva, 1000);
+
+        let elementoTimer = document.querySelector('div.timer h1');
+        let tempoRestante = 40;
+
+        // funções
+
+        function abrirDialogo() {
+        document.getElementById('myDialog').showModal();
+        document.getElementById('myDialog').style.display='flex'
+        }
+
+        function fecharDialogo() {
+        document.getElementById('myDialog').close();
+        }
+
+        function selecionaCarta(){
+            var cards = window.document.querySelectorAll('div.card-1')
+            cards.forEach(card =>{
+                card.addEventListener('click', () => {
+                    if (card.classList.contains('selecionado')) {
+                    card.classList.remove('selecionado')
+                    } else {
+                    card.classList.add('selecionado')
+                    }
+                })
+            })
+        }
+
+        function contagemRegressiva(){
+            let tempoFomatado= `00:${tempoRestante < 10 ? '0' : ''}${tempoRestante}`;
+            elementoTimer.textContent = tempoFomatado;
+
+            if (tempoRestante <= 10) {
+                elementoTimer.classList.add('vermelho');
+            }
+
+            if (tempoRestante > 0) {
+                tempoRestante--;
+            } else {
+                clearInterval(timerInterval);
+            }
+        }
+    </script>
+
 </body>
 </html>
