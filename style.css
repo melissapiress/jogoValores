@@ -117,6 +117,7 @@ header{
 .botoes-inicio{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 a{
@@ -268,3 +269,26 @@ form{
   }
 
 /* ------------------ FINAL --------------- */
+.final{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-left: 10px;
+}
+
+.botao-final{
+    display: flex;
+    border-radius: 15px;
+    background-color: #13563E;
+    color: #FFFFFF;
+    width: 200px;
+    height: 70px;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao-jogar:hover{
+    background-color: #0e3f2e;
+}
