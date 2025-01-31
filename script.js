@@ -3,7 +3,12 @@ selecionaCarta()
 let timerInterval = setInterval(contagemRegressiva, 1000);
 
 let elementoTimer = document.querySelector('div.timer h1');
-let tempoRestante = 40;
+let tempoRestante = 75;
+let pontuacao = 0;
+
+if (pontuacao < 0){
+    pontuacao = 0;
+}
 
 // funções
 
@@ -21,9 +26,24 @@ function selecionaCarta(){
     cards.forEach(card =>{
         card.addEventListener('click', () => {
             if (card.classList.contains('selecionado')) {
-            card.classList.remove('selecionado')
-            } else {
-            card.classList.add('selecionado')
+                card.classList.remove('selecionado')
+                if (card.classList.contains('correto')){
+                    pontuacao -= 1;
+                    console.log(pontuacao);
+                } else {
+                    pontuacao += 1;
+                    console.log(pontuacao)
+                }
+            } 
+            else {
+                card.classList.add('selecionado')
+                if (card.classList.contains('correto')){
+                    pontuacao += 1;
+                    console.log(pontuacao)
+                } else {
+                    pontuacao -= 1;
+                    console.log(pontuacao)
+                }
             }
         })
     })
@@ -40,8 +60,11 @@ function contagemRegressiva(){
     if (tempoRestante > 0) {
         tempoRestante--;
     } else {
+
         clearInterval(timerInterval);
     }
 }
+
+
 
 // ----------------------- POST ----------------------------
