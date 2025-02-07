@@ -1,70 +1,89 @@
 // ---------------- Valores ------------------
-selecionaCarta()
-let timerInterval = setInterval(contagemRegressiva, 1000);
+contagemRegressiva()
 
-let elementoTimer = document.querySelector('div.timer h1');
-let tempoRestante = 75;
+let pontuacaoPorValor = 0;
 let pontuacao = 0;
+document.addEventListener("DOMContentLoaded", () => {
+recuperarPontos()
+})
 
-if (pontuacao < 0){
-    pontuacao = 0;
-}
+var cards = window.document.querySelectorAll('div.card-1')
+
+
+cards.forEach(card =>{
+    card.addEventListener('click', () => {
+        if (card.classList.contains('selecionado')) {
+            card.classList.remove('selecionado')
+            if (card.classList.contains('correto')){
+                pontuacaoPorValor -= 1;
+                console.log(pontuacaoPorValor);
+            } else {
+
+                pontuacaoPorValor += 1;
+                console.log(pontuacaoPorValor)
+            }
+        }  
+        else {
+            card.classList.add('selecionado')
+            if (card.classList.contains('correto')){
+                pontuacaoPorValor += 1;
+                console.log(pontuacaoPorValor)
+            } else {
+                pontuacaoPorValor -= 1;
+                console.log(pontuacaoPorValor)
+            }
+        }
+        pontuacao += pontuacaoPorValor
+        sessionStorage.setItem('pontuacao', pontuacao) 
+    })
+})
 
 // funções
 
+function recuperarPontos() {
+    if (sessionStorage.getItem('pontuacao')) {
+        pontuacao = Number(sessionStorage.getItem('pontuacao'));
+    } else {
+        sessionStorage.getItem('pontuacao');
+    }
+}
+
 function abrirDialogo() {
-document.getElementById('myDialog').showModal();
-document.getElementById('myDialog').style.display='flex'
+    document.getElementById('myDialog').showModal();
+    document.getElementById('myDialog').style.display='flex'
 }
 
 function fecharDialogo() {
-document.getElementById('myDialog').close();
+    document.getElementById('myDialog').close();
 }
 
-function selecionaCarta(){
-    var cards = window.document.querySelectorAll('div.card-1')
-    cards.forEach(card =>{
-        card.addEventListener('click', () => {
-            if (card.classList.contains('selecionado')) {
-                card.classList.remove('selecionado')
-                if (card.classList.contains('correto')){
-                    pontuacao -= 1;
-                    console.log(pontuacao);
-                } else {
-                    pontuacao += 1;
-                    console.log(pontuacao)
-                }
-            } 
-            else {
-                card.classList.add('selecionado')
-                if (card.classList.contains('correto')){
-                    pontuacao += 1;
-                    console.log(pontuacao)
-                } else {
-                    pontuacao -= 1;
-                    console.log(pontuacao)
-                }
-            }
-        })
-    })
-}
 
 function contagemRegressiva(){
-    let tempoFomatado= `00:${tempoRestante < 10 ? '0' : ''}${tempoRestante}`;
-    elementoTimer.textContent = tempoFomatado;
-
-    if (tempoRestante <= 10) {
-        elementoTimer.classList.add('vermelho');
+    if (!sessionStorage.getItem('horaInicio')) {
+        sessionStorage.setItem('horaInicio', Date.now());
     }
 
-    if (tempoRestante > 0) {
-        tempoRestante--;
-    } else {
+    const intervaloTimer = setInterval(function() {
+        const tempoDecorrido = Date.now() - sessionStorage.getItem('horaInicio');
+        const tempoRestante = 600000 - tempoDecorrido; // 10 minutos = 600.000 ms
+        
+        if (tempoRestante <= 0) {
+            window.location.href = '/final.html';  
+            clearInterval(intervaloTimer);
+            reiniciaTimer();
+        } else {
+            const minutos = Math.floor(tempoRestante / 60000);
+            const segundos = Math.floor((tempoRestante % 60000) / 1000);
+            document.querySelector('.timer h1').innerText = `${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
+        }
+    }, 1000); // Atualiza a cada segundo
 
-        clearInterval(timerInterval);
-    }
+    
+}
+
+function reiniciaTimer(){
+    botaoFinal = querySelector('.botao-final')
+    botaoFinal.addEventListener('click', sessionStorage.clear())
 }
 
 
-
-// ----------------------- POST ----------------------------
