@@ -1,10 +1,11 @@
 // ---------------- Valores ------------------
-contagemRegressiva()
+
 
 let pontuacaoPorValor = 0;
 let pontuacao = 0;
 document.addEventListener("DOMContentLoaded", () => {
 recuperarPontos()
+contagemRegressiva()
 })
 
 var cards = window.document.querySelectorAll('div.card-1')
@@ -16,27 +17,38 @@ cards.forEach(card =>{
             card.classList.remove('selecionado')
             if (card.classList.contains('correto')){
                 pontuacaoPorValor -= 1;
-                console.log(pontuacaoPorValor);
+                pontuacao -= 1
+                
             } else {
-
+                pontuacao+=1
                 pontuacaoPorValor += 1;
-                console.log(pontuacaoPorValor)
+                
             }
         }  
         else {
             card.classList.add('selecionado')
             if (card.classList.contains('correto')){
                 pontuacaoPorValor += 1;
+                pontuacao+=1
                 console.log(pontuacaoPorValor)
+                console.log(pontuacao)
             } else {
                 pontuacaoPorValor -= 1;
+                pontuacao-=1
                 console.log(pontuacaoPorValor)
             }
         }
-        pontuacao += pontuacaoPorValor
         sessionStorage.setItem('pontuacao', pontuacao) 
     })
 })
+
+let botaoFinal = document.querySelector('.botao-final');
+
+botaoFinal.addEventListener('click', () => {
+    // sessionStorage.removeItem('horaInicio')
+    sessionStorage.clear()
+} )
+
 
 // funções
 
@@ -70,7 +82,7 @@ function contagemRegressiva(){
         if (tempoRestante <= 0) {
             window.location.href = '/final.html';  
             clearInterval(intervaloTimer);
-            reiniciaTimer();
+
         } else {
             const minutos = Math.floor(tempoRestante / 60000);
             const segundos = Math.floor((tempoRestante % 60000) / 1000);
@@ -81,9 +93,6 @@ function contagemRegressiva(){
     
 }
 
-function reiniciaTimer(){
-    botaoFinal = querySelector('.botao-final')
-    botaoFinal.addEventListener('click', sessionStorage.clear())
-}
+
 
 
