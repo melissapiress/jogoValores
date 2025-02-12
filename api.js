@@ -1,9 +1,8 @@
 const url = "http://localhost:8080/cadastroUser"
 
-const signInForm = document.querySelector("#sign-in-form");
+const signInForm = document.querySelector("#login-form");
 const emailInput = document.querySelector("#email").val();
 const usernameInput = document.querySelector("#username")
-const passwordInput = document.querySelector("#password")
 
 addEventListener(onsubmit, alert(emailInput))
 
