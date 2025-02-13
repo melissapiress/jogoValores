@@ -1,13 +1,13 @@
-package com.valoresjef.valoresjef;
+package com.jogo.valoresJeF;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ValoresjefApplication {
+public class ValoresJeFApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ValoresjefApplication.class, args);
+		SpringApplication.run(ValoresJeFApplication.class, args);
 	}
 
 }

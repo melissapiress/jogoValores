@@ -265,8 +265,34 @@ form{
     width: 50%;
     padding: 3%;
     flex-direction: column;
+    border: solid .5px rgb(35, 82, 55);
+    border-radius: 20px;
 
-    border: solid ;
+    h1, h3, p {
+        margin-bottom: 1%;
+    }
+    
+
+    div{
+        display:flex;
+        justify-content: center;
+        margin-top: 2%
+    
+    }
+
+
+    a {
+        display: flex;
+        text-decoration: none;
+        border-radius: 15px;
+        background-color: #13563E;
+        color: #FFFFFF;
+        width: 120px;
+        height: 50px;
+        font-size: larger;
+        align-items: center;
+        justify-content: center;
+    }
 
 }
 

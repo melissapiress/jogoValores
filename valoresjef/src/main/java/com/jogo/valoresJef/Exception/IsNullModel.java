@@ -1,4 +1,4 @@
-package com.valoresjef.valoresjef.IsNullException;
+package com.jogo.valoresJeF.Exception;
 
 public class IsNullModel {
     private String message;
