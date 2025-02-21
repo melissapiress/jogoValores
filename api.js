@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    const url = "http://localhost:8080/cadastroUser"
+    const url = "https://apijogovalores.onrender.com/cadastroUser"
     
     const loginForm = document.querySelector("#login-form");
     

@@ -111,7 +111,7 @@ function mostraFeedback(){
     if(pontuacaoFinal == 280){
         pFeedback.innerText='Parabéns! Você acertou tudo. Continue assim!'
     } else if (pontuacaoFinal >= 200){
-        pFeedback.innerText='Parabéns! Você ganhou!'
+        pFeedback.innerText='Parabéns! Você ganhou! Mas continue estudando os valores para alcançar os 100%! '
     } else if (pontuacaoFinal >= 140){
         pFeedback.innerText = 'Você perdeu, mas acertou mais de 50%! Estude os valores um pouco mais e você conseguirá na próxima!'
     } else {
