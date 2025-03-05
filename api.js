@@ -4,11 +4,16 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const loginForm = document.querySelector("#login-form");
     
+    const spinner = document.createElement("div");
+    spinner.classList.add("spinner");
+    spinner.style.display = "none"; 
+    loginForm.appendChild(spinner);
     
     loginForm.addEventListener("submit", (e) =>{
         e.preventDefault()
         email = document.getElementById("email").value
         username = document.getElementById("username").value
+        spinner.style.display = "block";
         fetch(url, {
             method: 'POST',
             headers: {
@@ -32,7 +37,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Login falhou. Verifique suas credenciais");
             }
         })
-        .catch(error => console.error("Erro:", error));
-        
+        .catch(error => {
+            console.error("Erro:", error);
+            alert("Ocorreu um erro. Tente novamente.");
+        })
+        .finally(() => {
+            spinner.style.display = "none";
+        });
     });   
 }); 
